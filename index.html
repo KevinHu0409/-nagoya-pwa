@@ -30,30 +30,22 @@ html,body{background:var(--bg);color:var(--text);font-family:'Noto Sans TC',sans
 .orb3{width:300px;height:300px;background:#ec4899;top:40%;left:60%;animation-delay:-13s;}
 @keyframes drift{0%{transform:translate(0,0) scale(1);}100%{transform:translate(40px,30px) scale(1.1);}}
 
-/* Layout: desktop = side-by-side, mobile = stacked */
-.outer{position:relative;z-index:1;display:flex;flex-direction:row;min-height:100vh;gap:0;}
-
-/* Left panel */
+.outer{position:relative;z-index:1;display:flex;flex-direction:row;min-height:100vh;}
 .left-panel{width:420px;flex-shrink:0;padding:24px 16px calc(80px + env(safe-area-inset-bottom));overflow-y:auto;height:100vh;position:sticky;top:0;}
-
-/* Right panel = map */
 .map-panel{flex:1;position:sticky;top:0;height:100vh;}
-#map{width:100%;height:100%;z-index:1;}
+#map{width:100%;height:100%;}
 
-/* Mobile: stack vertically */
 @media(max-width:800px){
   .outer{flex-direction:column;}
-  .left-panel{width:100%;height:auto;position:static;overflow:visible;padding-bottom:0;}
-  .map-panel{height:320px;position:static;}
+  .left-panel{width:100%;height:auto;position:static;overflow:visible;padding-bottom:16px;}
+  .map-panel{height:300px;position:static;}
 }
 
-/* Header */
 .header{text-align:center;margin-bottom:20px;}
 .header-tag{display:inline-block;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--accent);text-transform:uppercase;border:1px solid rgba(192,132,252,0.3);padding:4px 12px;border-radius:99px;margin-bottom:10px;}
 .header h1{font-size:22px;font-weight:700;letter-spacing:-0.5px;margin-bottom:4px;}
 .header .subtitle{font-family:'DM Mono',monospace;font-size:12px;color:var(--text3);}
 
-/* Settings */
 .settings-toggle{width:100%;background:var(--surface);border:1px solid var(--border2);border-radius:14px;padding:11px 14px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;color:var(--text2);font-size:13px;font-family:'Noto Sans TC',sans-serif;margin-bottom:10px;transition:border-color 0.2s;}
 .settings-toggle:hover{border-color:rgba(192,132,252,0.4);}
 .settings-toggle .icon{transition:transform 0.3s;}
@@ -69,12 +61,9 @@ html,body{background:var(--bg);color:var(--text);font-family:'Noto Sans TC',sans
 .stop-setting-row{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:8px;padding:7px 10px;background:var(--surface2);border-radius:8px;}
 .stop-setting-name{font-size:12px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .stop-dur-input{background:transparent;border:1px solid var(--border2);border-radius:6px;padding:3px 5px;color:var(--text);font-family:'DM Mono',monospace;font-size:12px;width:48px;text-align:center;outline:none;}
-.stop-dur-input:focus{border-color:rgba(192,132,252,0.5);}
 .dur-label{font-size:11px;color:var(--text3);}
-.apply-btn{width:100%;background:linear-gradient(135deg,rgba(124,58,237,0.3),rgba(129,140,248,0.3));border:1px solid rgba(192,132,252,0.4);border-radius:10px;padding:9px;color:var(--accent);font-size:13px;font-family:'Noto Sans TC',sans-serif;cursor:pointer;transition:all 0.2s;}
-.apply-btn:hover{background:linear-gradient(135deg,rgba(124,58,237,0.5),rgba(129,140,248,0.5));}
+.apply-btn{width:100%;background:linear-gradient(135deg,rgba(124,58,237,0.3),rgba(129,140,248,0.3));border:1px solid rgba(192,132,252,0.4);border-radius:10px;padding:9px;color:var(--accent);font-size:13px;font-family:'Noto Sans TC',sans-serif;cursor:pointer;}
 
-/* Clock */
 .clock-card{background:var(--surface);border:1px solid var(--border2);border-radius:18px;padding:20px 18px 16px;margin-bottom:12px;text-align:center;position:relative;overflow:hidden;}
 .clock-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(192,132,252,0.5),transparent);}
 .clock-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);font-family:'DM Mono',monospace;margin-bottom:8px;}
@@ -86,7 +75,6 @@ html,body{background:var(--bg);color:var(--text);font-family:'Noto Sans TC',sans
 .prog-track{height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;}
 .prog-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,#7c3aed,#818cf8);transition:width 1s linear;}
 
-/* Current stop */
 .current-stop-card{background:rgba(124,58,237,0.1);border:1px solid rgba(192,132,252,0.3);border-radius:12px;padding:12px 14px;margin-bottom:12px;display:none;}
 .current-stop-card.visible{display:block;}
 .cs-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-family:'DM Mono',monospace;margin-bottom:5px;}
@@ -97,16 +85,26 @@ html,body{background:var(--bg);color:var(--text);font-family:'Noto Sans TC',sans
 .cs-check-btn{background:rgba(52,211,153,0.15);border:1px solid rgba(52,211,153,0.4);border-radius:8px;padding:7px 14px;color:var(--green);font-size:12px;font-family:'Noto Sans TC',sans-serif;cursor:pointer;display:flex;align-items:center;gap:5px;transition:all 0.2s;}
 .cs-check-btn:hover{background:rgba(52,211,153,0.3);}
 
-/* Stops list */
 .section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:7px;padding-left:2px;}
-.stops{display:flex;flex-direction:column;gap:5px;}
+.stops{display:flex;flex-direction:column;gap:4px;}
+
+/* 地鐵 transfer row */
+.metro-row{display:flex;align-items:center;gap:8px;padding:5px 4px;}
+.metro-line-l{width:16px;height:1px;background:var(--border);}
+.metro-line-r{flex:1;height:1px;background:var(--border);}
+.metro-badge{font-family:'DM Mono',monospace;font-size:10px;color:var(--amber);white-space:nowrap;background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.2);border-radius:99px;padding:2px 10px;display:flex;align-items:center;gap:4px;}
+
 .stop-card{background:var(--surface);border:1px solid var(--border);border-radius:11px;overflow:hidden;transition:all 0.3s;cursor:pointer;}
 .stop-card:hover{border-color:var(--border2);}
 .stop-card.is-current{border-color:rgba(192,132,252,0.35);}
 .stop-card.is-done{opacity:0.4;}
+.stop-card.is-transfer{background:rgba(251,191,36,0.05);border-color:rgba(251,191,36,0.15);cursor:default;}
+.stop-card.is-transfer:hover{border-color:rgba(251,191,36,0.25);}
+.stop-card.is-transfer.is-current{border-color:rgba(251,191,36,0.5);}
 .stop-inner{display:flex;align-items:center;gap:9px;padding:9px 11px;}
 .stop-emoji{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;background:var(--surface2);}
 .stop-card.is-current .stop-emoji{background:rgba(124,58,237,0.2);}
+.stop-card.is-transfer.is-current .stop-emoji{background:rgba(251,191,36,0.15);}
 .stop-body{flex:1;min-width:0;}
 .stop-name{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .stop-sub{font-size:11px;color:var(--text3);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
@@ -116,28 +114,21 @@ html,body{background:var(--bg);color:var(--text);font-family:'Noto Sans TC',sans
 .b-current{background:rgba(192,132,252,0.15);color:var(--accent);}
 .b-done{background:rgba(52,211,153,0.12);color:var(--green);}
 .b-adjusted{background:rgba(251,191,36,0.12);color:var(--amber);}
+.b-transit{background:rgba(251,191,36,0.1);color:var(--amber);}
 .stop-time-txt{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);display:block;text-align:right;}
 .stop-time-txt.is-adjusted{color:var(--amber);}
 .stop-prog-bar{height:2px;background:rgba(255,255,255,0.04);}
 .stop-prog-fill{height:100%;transition:width 1s linear;}
 
-/* Transfer */
-.transfer-row{display:flex;align-items:center;gap:8px;padding:2px 3px;}
-.t-line{flex:1;height:1px;background:var(--border);}
-.t-txt{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);white-space:nowrap;}
-
-/* Adj banner */
 .adj-banner{background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.2);border-radius:10px;padding:7px 11px;margin-bottom:10px;font-size:12px;color:var(--amber);display:none;align-items:center;gap:8px;}
 .adj-banner.visible{display:flex;}
 
 .now-line{text-align:center;margin-top:16px;font-family:'DM Mono',monospace;font-size:11px;color:var(--text3);}
 .now-line strong{color:var(--text2);}
 
-/* Toast */
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:rgba(52,211,153,0.15);border:1px solid rgba(52,211,153,0.4);border-radius:12px;padding:9px 18px;color:var(--green);font-size:13px;font-family:'Noto Sans TC',sans-serif;transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);z-index:9999;white-space:nowrap;}
 .toast.show{transform:translateX(-50%) translateY(0);}
 
-/* Leaflet overrides for dark map */
 .leaflet-container{background:#1a1a2e!important;}
 .leaflet-popup-content-wrapper{background:var(--surface);border:1px solid var(--border2);color:var(--text);border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,0.5);}
 .leaflet-popup-tip{background:var(--surface);}
@@ -146,7 +137,6 @@ html,body{background:var(--bg);color:var(--text);font-family:'Noto Sans TC',sans
 .leaflet-control-attribution{background:rgba(10,10,15,0.7)!important;color:var(--text3)!important;font-size:9px!important;}
 .leaflet-control-attribution a{color:var(--text3)!important;}
 
-/* Person marker pulse */
 @keyframes pulse{0%{transform:scale(1);opacity:1;}70%{transform:scale(2.5);opacity:0;}100%{transform:scale(1);opacity:0;}}
 .person-marker-wrap{position:relative;width:36px;height:36px;}
 .person-marker-pulse{position:absolute;top:50%;left:50%;width:36px;height:36px;margin:-18px 0 0 -18px;border-radius:50%;background:rgba(192,132,252,0.4);animation:pulse 2s ease-out infinite;}
@@ -157,21 +147,19 @@ html,body{background:var(--bg);color:var(--text);font-family:'Noto Sans TC',sans
 <div class="bg-orbs"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
 
 <div class="outer">
-  <!-- LEFT PANEL -->
   <div class="left-panel">
     <div class="header">
       <div class="header-tag">Nagoya Shopping</div>
       <h1>名古屋購物行程</h1>
-      <div class="subtitle" id="headerSubtitle">3/27（五）16:45 – 19:30</div>
+      <div class="subtitle" id="headerSubtitle">3/27（五）15:06 – 19:30</div>
     </div>
 
     <button class="settings-toggle" id="settingsToggle" onclick="toggleSettings()">
-      <span>⚙️ 設定時間 & 站點</span>
-      <span class="icon">▼</span>
+      <span>⚙️ 設定時間 & 站點</span><span class="icon">▼</span>
     </button>
     <div class="settings-panel" id="settingsPanel">
       <div class="settings-row">
-        <div class="settings-field"><label>出發時間</label><input type="time" id="inputStart" value="16:45"></div>
+        <div class="settings-field"><label>出發時間</label><input type="time" id="inputStart" value="15:06"></div>
         <div class="settings-field"><label>結束時間</label><input type="time" id="inputEnd" value="19:30"></div>
       </div>
       <div style="font-size:10px;color:var(--text3);font-family:'DM Mono',monospace;letter-spacing:1px;text-transform:uppercase;margin-bottom:7px;">各站預計時間（分鐘）</div>
@@ -185,7 +173,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Noto Sans TC',sans
       <div class="clock-label" id="clockLabel">行程剩餘時間</div>
       <div class="clock-time" id="clockTime">--:--</div>
       <div class="clock-sub" id="clockSub">計算中...</div>
-      <div class="total-prog-label"><span id="startLabel">16:45</span><span id="pctLabel">0%</span><span id="endLabel">19:30</span></div>
+      <div class="total-prog-label"><span id="startLabel">15:06</span><span id="pctLabel">0%</span><span id="endLabel">19:30</span></div>
       <div class="prog-track"><div class="prog-fill" id="totalFill" style="width:0%"></div></div>
     </div>
 
@@ -204,10 +192,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Noto Sans TC',sans
     <div class="now-line">現在時間 <strong id="nowDisplay">--:--:--</strong></div>
   </div>
 
-  <!-- RIGHT PANEL: MAP -->
-  <div class="map-panel">
-    <div id="map"></div>
-  </div>
+  <div class="map-panel"><div id="map"></div></div>
 </div>
 
 <div class="toast" id="toast"></div>
@@ -216,121 +201,96 @@ html,body{background:var(--bg);color:var(--text);font-family:'Noto Sans TC',sans
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then(reg => console.log('SW registered:', reg.scope))
-      .catch(err => console.log('SW failed:', err));
+    navigator.serviceWorker.register('./sw.js')
+      .then(r => console.log('SW:', r.scope))
+      .catch(e => console.log('SW err:', e));
   });
 }
-</script>
-<script>
-// ── Stop data with coordinates ──────────────────────────────
+
+// transfer: true = 地鐵交通站，不可打卡
+// isMetro: true = 純地鐵資訊列（無地圖 marker）
 const DEFAULT_STOPS = [
+  { name:"抵達名古屋站", sub:"新幹線出站", icon:"🚄", dur:5, color:"#c084fc", area:"名古屋站", lat:35.1708, lng:136.8829 },
+  { name:"地鐵名城線→名古屋城站", sub:"名古屋站 → 市役所站｜約15分", icon:"🚇", dur:15, color:"#fbbf24", area:"移動中", lat:35.1740, lng:136.8900, transfer:true },
+  { name:"名古屋城", sub:"本丸御殿｜⚠️ 16:30 關門", icon:"🏯", dur:60, color:"#34d399", area:"名古屋城", lat:35.1847, lng:136.8997 },
+  { name:"地鐵名城線→榮站", sub:"市役所站 → 榮站｜約8分", icon:"🚇", dur:8, color:"#fbbf24", area:"移動中", lat:35.1695, lng:136.9080, transfer:true },
+  { name:"吉伊卡哇 Land", sub:"PARCO 東館 3F", icon:"🐹", dur:35, color:"#f472b6", area:"榮區", lat:35.1636361, lng:136.9081084 },
+  { name:"寶可夢中心", sub:"PARCO 東館 2F｜名古屋限定", icon:"⚡", dur:40, color:"#fbbf24", area:"榮區", lat:35.1635667, lng:136.90806759 },
+  { name:"地鐵東山線→名古屋站", sub:"榮站 → 名古屋站｜約8分", icon:"🚇", dur:8, color:"#fbbf24", area:"移動中", lat:35.1708, lng:136.8829, transfer:true },
   { name:"Sanrio Gift Gate", sub:"三麗鷗｜高島屋 Gate Tower 7F", icon:"🎀", dur:30, color:"#c084fc", area:"名古屋站", lat:35.1718703, lng:136.8831836 },
   { name:"Ball & Chain", sub:"大名古屋ビルヂング｜刺繡包", icon:"👜", dur:30, color:"#2dd4bf", area:"名古屋站", lat:35.1719951, lng:136.8845283 },
   { name:"松本清", sub:"DHC 藥妝快速掃貨", icon:"💊", dur:20, color:"#60a5fa", area:"名古屋站", lat:35.1687449, lng:136.8819079 },
-  { name:"搭地鐵→矢場町", sub:"東山線｜名古屋站→矢場町", icon:"🚇", dur:10, color:"#fbbf24", area:"移動中", lat:35.169, lng:136.888, transfer:true },
-  { name:"寶可夢中心", sub:"PARCO 東館 2F｜名古屋限定", icon:"⚡", dur:40, color:"#fbbf24", area:"榮區", lat:35.1635667, lng:136.90806759 },
-  { name:"吉伊卡哇 Land", sub:"PARCO 東館 3F", icon:"🐹", dur:35, color:"#f472b6", area:"榮區", lat:35.1636361, lng:136.9081084 },
+  { name:"HANDS 名古屋", sub:"JR 高島屋 5~11F｜MATCHA 95折", icon:"🛍️", dur:30, color:"#818cf8", area:"名古屋站", lat:35.1708, lng:136.8829 },
 ];
 
-let startMin = 16*60+45, endMin = 19*60+30;
-let stops = DEFAULT_STOPS.map(s=>({...s}));
-let doneAt = {};
-let map, personMarker, stopMarkers = [], routeLine;
-let currentStopIdx = -1;
+let startMin=15*60+6, endMin=19*60+30;
+let stops=DEFAULT_STOPS.map(s=>({...s}));
+let doneAt={};
+let map, personMarker, stopMarkers=[], currentStopIdx=-1;
 
-// ── Helpers ──────────────────────────────────────────────────
 function pad(n){return String(n).padStart(2,'0');}
 function minToStr(m){return pad(Math.floor(m/60))+':'+pad(Math.round(m%60));}
 function secToStr(s){s=Math.max(0,Math.round(s));const h=Math.floor(s/3600),m=Math.floor((s%3600)/60);return pad(h)+':'+pad(m);}
 function getNowMin(){const d=new Date();return d.getHours()*60+d.getMinutes()+(d.getSeconds()/60);}
-function getNowSec(){const d=new Date();return d.getHours()*3600+d.getMinutes()*60+d.getSeconds();}
 
 function computeSchedule(){
   let cursor=startMin;
   return stops.map((s,i)=>{
-    const st = i===0 ? startMin : (doneAt[i-1]!==undefined ? doneAt[i-1] : cursor);
-    const en = st+s.dur;
+    const st=i===0?startMin:(doneAt[i-1]!==undefined?doneAt[i-1]:cursor);
+    const en=st+s.dur;
     cursor=en;
-    return {start:st,end:en};
+    return{start:st,end:en};
   });
 }
 
-// ── Map init ─────────────────────────────────────────────────
 function initMap(){
-  map = L.map('map',{zoomControl:true,attributionControl:true}).setView([35.1695,136.893],14);
-
-  // Dark tile layer
+  map=L.map('map',{zoomControl:true}).setView([35.175,136.893],13);
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{
-    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
-    subdomains:'abcd', maxZoom:19
+    attribution:'&copy; OSM &copy; CARTO',subdomains:'abcd',maxZoom:19
   }).addTo(map);
 
-  // Draw stop markers
+  // 只有非地鐵站才放 marker
   stops.forEach((s,i)=>{
-    const el = document.createElement('div');
-    el.style.cssText=`width:28px;height:28px;border-radius:50%;background:${s.color}22;border:2px solid ${s.color};display:flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer;transition:transform 0.2s;`;
+    if(s.transfer) return;
+    const el=document.createElement('div');
+    el.style.cssText=`width:28px;height:28px;border-radius:50%;background:${s.color}22;border:2px solid ${s.color};display:flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer;`;
     el.textContent=s.icon;
-    el.title=s.name;
-
-    const marker = L.marker([s.lat,s.lng],{
-      icon: L.divIcon({className:'',html:el.outerHTML,iconSize:[28,28],iconAnchor:[14,14]})
+    const marker=L.marker([s.lat,s.lng],{
+      icon:L.divIcon({className:'',html:el.outerHTML,iconSize:[28,28],iconAnchor:[14,14]})
     }).addTo(map);
-
     marker.bindPopup(`<div style="font-size:13px;font-weight:500;">${s.icon} ${s.name}</div><div style="font-size:11px;color:#9090a8;margin-top:3px;">${s.sub}</div>`);
-    stopMarkers.push(marker);
+    stopMarkers[i]=marker;
   });
 
-  // Draw route line
-  const coords = stops.map(s=>[s.lat,s.lng]);
-  routeLine = L.polyline(coords,{
-    color:'rgba(192,132,252,0.4)',
-    weight:2,
-    dashArray:'6 6'
-  }).addTo(map);
+  // 路線（只連非地鐵站）
+  const coords=stops.filter(s=>!s.transfer).map(s=>[s.lat,s.lng]);
+  L.polyline(coords,{color:'rgba(192,132,252,0.35)',weight:2,dashArray:'6 6'}).addTo(map);
 
-  // Person marker (start hidden)
-  const personEl = `<div class="person-marker-wrap"><div class="person-marker-pulse"></div><div class="person-marker-dot">🧍</div></div>`;
-  personMarker = L.marker([stops[0].lat,stops[0].lng],{
-    icon: L.divIcon({className:'',html:personEl,iconSize:[36,36],iconAnchor:[18,18]}),
+  const personEl=`<div class="person-marker-wrap"><div class="person-marker-pulse"></div><div class="person-marker-dot">🧍</div></div>`;
+  personMarker=L.marker([stops[0].lat,stops[0].lng],{
+    icon:L.divIcon({className:'',html:personEl,iconSize:[36,36],iconAnchor:[18,18]}),
     zIndexOffset:1000
   });
 }
 
 function updateMap(curIdx){
-  if(curIdx<0||curIdx>=stops.length) return;
-  if(curIdx===currentStopIdx) return;
+  if(curIdx<0||curIdx>=stops.length)return;
+  if(curIdx===currentStopIdx)return;
   currentStopIdx=curIdx;
-
   const s=stops[curIdx];
-
-  // Move person marker
-  if(!map.hasLayer(personMarker)) personMarker.addTo(map);
+  if(!map.hasLayer(personMarker))personMarker.addTo(map);
   personMarker.setLatLng([s.lat,s.lng]);
-
-  // Fly to current stop (smooth pan)
   map.flyTo([s.lat,s.lng],16,{duration:1.2});
-
-  // Pulse current stop marker
   stopMarkers.forEach((m,i)=>{
-    const el=m.getElement();
-    if(!el) return;
-    const div=el.querySelector('div');
-    if(!div) return;
-    if(i===curIdx){
-      div.style.transform='scale(1.3)';
-      div.style.boxShadow=`0 0 12px ${stops[i].color}`;
-    } else if(doneAt[i]!==undefined){
-      div.style.opacity='0.35';
-      div.style.transform='scale(1)';
-    } else {
-      div.style.transform='scale(1)';
-      div.style.boxShadow='none';
-    }
+    if(!m)return;
+    const el=m.getElement();if(!el)return;
+    const div=el.querySelector('div');if(!div)return;
+    if(i===curIdx){div.style.transform='scale(1.3)';div.style.boxShadow=`0 0 12px ${stops[i].color}`;}
+    else if(doneAt[i]!==undefined){div.style.opacity='0.35';div.style.transform='scale(1)';}
+    else{div.style.transform='scale(1)';div.style.boxShadow='none';}
   });
 }
 
-// ── Settings ─────────────────────────────────────────────────
 function toggleSettings(){
   document.getElementById('settingsToggle').classList.toggle('open');
   document.getElementById('settingsPanel').classList.toggle('open');
@@ -360,23 +320,22 @@ function applySettings(){
   renderList();showToast('✓ 設定已套用！');
 }
 
-// ── Checkpoint ───────────────────────────────────────────────
 function checkpointDone(){
   const sch=computeSchedule();
   const nowM=getNowMin();
   let cur=-1;
   for(let i=0;i<stops.length;i++){
     if(doneAt[i]!==undefined)continue;
+    if(stops[i].transfer)continue; // 地鐵站不可打卡
     if(nowM>=sch[i].start){cur=i;}else break;
   }
-  if(cur<0){for(let i=0;i<stops.length;i++){if(nowM<sch[i].start){cur=i;break;}}}
   if(cur<0)return;
   doneAt[cur]=nowM;
   const diff=Math.round(sch[cur].end-nowM);
-  const msg=diff>0?`✓ 完成！提早 ${diff} 分鐘，後段時間 +${diff}分`:diff<0?`✓ 完成！超時 ${Math.abs(diff)} 分鐘，後段已調整`:'✓ 準時完成！';
+  const msg=diff>0?`✓ 完成！提早 ${diff} 分，後段 +${diff}分`:diff<0?`✓ 完成！超時 ${Math.abs(diff)} 分，已調整`:'✓ 準時完成！';
   document.getElementById('adjBanner').classList.add('visible');
   document.getElementById('adjText').textContent=msg;
-  currentStopIdx=-1; // force map update
+  currentStopIdx=-1;
   renderList();showToast(msg);
 }
 
@@ -385,59 +344,56 @@ function showToast(msg){
   setTimeout(()=>t.classList.remove('show'),3200);
 }
 
-// ── Render list ──────────────────────────────────────────────
 function renderList(){
   const list=document.getElementById('stopsList');list.innerHTML='';
-  const sch=computeSchedule();let lastArea=null;
+  const sch=computeSchedule();
   stops.forEach((s,i)=>{
-    if(lastArea&&lastArea!==s.area&&!s.transfer){
-      const tr=document.createElement('div');tr.className='transfer-row';
-      tr.innerHTML=`<div class="t-line"></div><div class="t-txt">→ ${s.area}</div><div class="t-line"></div>`;
-      list.appendChild(tr);
-    }
-    lastArea=s.area;
-    const card=document.createElement('div');card.className='stop-card';card.id='sc-'+i;
+    const card=document.createElement('div');
+    card.className='stop-card'+(s.transfer?' is-transfer':'');
+    card.id='sc-'+i;
     const isAdj=!doneAt[i]&&i>0&&doneAt[i-1]!==undefined;
+    const badgeClass=s.transfer?'b-transit':'b-upcoming';
     card.innerHTML=`
       <div class="stop-inner">
         <div class="stop-emoji">${s.icon}</div>
-        <div class="stop-body"><div class="stop-name">${s.name}</div><div class="stop-sub">${s.sub}</div></div>
+        <div class="stop-body">
+          <div class="stop-name">${s.name}</div>
+          <div class="stop-sub">${s.sub}</div>
+        </div>
         <div class="stop-right">
-          <span class="stop-badge b-upcoming" id="badge-${i}">待開始</span>
+          <span class="stop-badge ${badgeClass}" id="badge-${i}">${s.transfer?'交通':'待開始'}</span>
           <span class="stop-time-txt${isAdj?' is-adjusted':''}" id="stime-${i}">${minToStr(Math.round(sch[i].start))}–${minToStr(Math.round(sch[i].end))}</span>
         </div>
       </div>
       <div class="stop-prog-bar"><div class="stop-prog-fill" id="sbar-${i}" style="width:0%;background:${s.color}"></div></div>`;
-    // Click to focus map
-    card.onclick=()=>{map.flyTo([s.lat,s.lng],17,{duration:1});stopMarkers[i].openPopup();};
+    if(!s.transfer && stopMarkers[i]){
+      card.onclick=()=>{map.flyTo([s.lat,s.lng],17,{duration:1});stopMarkers[i].openPopup();};
+    }
     list.appendChild(card);
   });
 }
 
-// ── Tick ─────────────────────────────────────────────────────
 function tick(){
-  const nowM=getNowMin();const nowS=getNowSec();
-  const sch=computeSchedule();const totalDur=endMin-startMin;
+  const nowM=getNowMin();
+  const sch=computeSchedule();
+  const totalDur=endMin-startMin;
   const d=new Date();
   document.getElementById('nowDisplay').textContent=pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds());
 
-  // Projected end
   let projectedEnd=endMin;
   let lastDone=-1;
   Object.keys(doneAt).forEach(k=>{if(parseInt(k)>lastDone)lastDone=parseInt(k);});
   if(lastDone>=0){let t=doneAt[lastDone];for(let i=lastDone+1;i<stops.length;i++)t+=stops[i].dur;projectedEnd=t;}
 
-  // Clock
   const cTime=document.getElementById('clockTime'),cLabel=document.getElementById('clockLabel'),cSub=document.getElementById('clockSub');
   const tf=document.getElementById('totalFill'),pct=document.getElementById('pctLabel');
   if(nowM<startMin){
-    const rem=Math.round((startMin-nowM)*60);
-    cLabel.textContent='距行程開始';cTime.textContent=secToStr(rem);cTime.className='clock-time waiting';
+    cLabel.textContent='距行程開始';cTime.textContent=secToStr((startMin-nowM)*60);cTime.className='clock-time waiting';
     cSub.textContent='準備出發！';tf.style.width='0%';pct.textContent='0%';
-  } else if(nowM>=projectedEnd){
+  }else if(nowM>=projectedEnd){
     cLabel.textContent='行程已結束';cTime.textContent='完成！';cTime.className='clock-time ended';
     cSub.textContent='希望收穫滿滿 ✓';tf.style.width='100%';pct.textContent='100%';
-  } else {
+  }else{
     const rem=Math.round((projectedEnd-nowM)*60);
     const p=Math.min(100,Math.round(((nowM-startMin)/totalDur)*100));
     cLabel.textContent='行程剩餘時間';cTime.textContent=secToStr(rem);cTime.className='clock-time';
@@ -446,16 +402,16 @@ function tick(){
     tf.style.width=p+'%';pct.textContent=p+'%';
   }
 
-  // Current stop
+  // 找目前站（地鐵站也算進去）
   let curIdx=-1;
   for(let i=0;i<stops.length;i++){
     if(doneAt[i]!==undefined)continue;
     if(nowM>=sch[i].start){curIdx=i;}else break;
   }
 
-  // Update map
-  if(curIdx>=0&&nowM<projectedEnd) updateMap(curIdx);
+  if(curIdx>=0&&nowM<projectedEnd)updateMap(curIdx);
 
+  // 現在進行中卡片（只在非地鐵站顯示打卡按鈕）
   const cc=document.getElementById('currentCard');
   if(curIdx>=0&&nowM<projectedEnd){
     cc.classList.add('visible');
@@ -463,25 +419,38 @@ function tick(){
     document.getElementById('csSub').textContent=stops[curIdx].sub;
     const stopEnd=doneAt[curIdx-1]!==undefined?doneAt[curIdx-1]+stops[curIdx].dur:sch[curIdx].end;
     document.getElementById('csTimeLeft').textContent=secToStr(Math.max(0,(stopEnd-nowM)*60));
-  } else { cc.classList.remove('visible'); }
+    // 地鐵站隱藏打卡按鈕
+    document.querySelector('.cs-check-btn').style.display=stops[curIdx].transfer?'none':'flex';
+  }else{cc.classList.remove('visible');}
 
-  // Stop cards
   stops.forEach((_,i)=>{
     const card=document.getElementById('sc-'+i),badge=document.getElementById('badge-'+i);
     const stime=document.getElementById('stime-'+i),sbar=document.getElementById('sbar-'+i);
     if(!card)return;
     const st=sch[i].start,en=sch[i].end;
     const isDone=doneAt[i]!==undefined,isAdj=!isDone&&i>0&&doneAt[i-1]!==undefined;
-    if(isDone){card.className='stop-card is-done';badge.className='stop-badge b-done';badge.textContent='完成 ✓';sbar.style.width='100%';}
-    else if(i===curIdx){card.className='stop-card is-current';badge.className='stop-badge b-current';badge.textContent='進行中';sbar.style.width=Math.min(100,Math.round(((nowM-st)/(en-st))*100))+'%';}
-    else if(nowM>=en){card.className='stop-card is-done';badge.className='stop-badge b-done';badge.textContent='完成 ✓';sbar.style.width='100%';}
-    else{card.className='stop-card';badge.className='stop-badge '+(isAdj?'b-adjusted':'b-upcoming');badge.textContent=isAdj?'時間調整':'待開始';}
+    const isTransfer=stops[i].transfer;
+    if(isDone){
+      card.className='stop-card'+(isTransfer?' is-transfer':'')+' is-done';
+      badge.className='stop-badge b-done';badge.textContent='完成 ✓';sbar.style.width='100%';
+    }else if(i===curIdx){
+      card.className='stop-card'+(isTransfer?' is-transfer':'')+' is-current';
+      badge.className='stop-badge '+(isTransfer?'b-transit':'b-current');
+      badge.textContent=isTransfer?'搭乘中':'進行中';
+      sbar.style.width=Math.min(100,Math.round(((nowM-st)/(en-st))*100))+'%';
+    }else if(nowM>=en){
+      card.className='stop-card'+(isTransfer?' is-transfer':'')+' is-done';
+      badge.className='stop-badge b-done';badge.textContent='完成 ✓';sbar.style.width='100%';
+    }else{
+      card.className='stop-card'+(isTransfer?' is-transfer':'');
+      badge.className='stop-badge '+(isAdj?'b-adjusted':isTransfer?'b-transit':'b-upcoming');
+      badge.textContent=isAdj?'時間調整':isTransfer?'交通':'待開始';
+    }
     stime.className='stop-time-txt'+(isAdj?' is-adjusted':'');
     stime.textContent=minToStr(Math.round(st))+'–'+minToStr(Math.round(en));
   });
 }
 
-// ── Init ─────────────────────────────────────────────────────
 initMap();
 renderList();
 document.getElementById('startLabel').textContent=minToStr(startMin);
