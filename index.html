@@ -151,7 +151,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Noto Sans TC',sans
     <div class="header">
       <div class="header-tag">Nagoya Shopping</div>
       <h1>名古屋購物行程</h1>
-      <div class="subtitle" id="headerSubtitle">3/27（五）15:06 – 19:30</div>
+      <div class="subtitle" id="headerSubtitle">3/27（五）15:06 – 19:15</div>
     </div>
 
     <button class="settings-toggle" id="settingsToggle" onclick="toggleSettings()">
@@ -160,7 +160,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Noto Sans TC',sans
     <div class="settings-panel" id="settingsPanel">
       <div class="settings-row">
         <div class="settings-field"><label>出發時間</label><input type="time" id="inputStart" value="15:06"></div>
-        <div class="settings-field"><label>結束時間</label><input type="time" id="inputEnd" value="19:30"></div>
+        <div class="settings-field"><label>結束時間</label><input type="time" id="inputEnd" value="19:15"></div>
       </div>
       <div style="font-size:10px;color:var(--text3);font-family:'DM Mono',monospace;letter-spacing:1px;text-transform:uppercase;margin-bottom:7px;">各站預計時間（分鐘）</div>
       <div class="stop-settings" id="stopSettings"></div>
@@ -173,7 +173,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Noto Sans TC',sans
       <div class="clock-label" id="clockLabel">行程剩餘時間</div>
       <div class="clock-time" id="clockTime">--:--</div>
       <div class="clock-sub" id="clockSub">計算中...</div>
-      <div class="total-prog-label"><span id="startLabel">15:06</span><span id="pctLabel">0%</span><span id="endLabel">19:30</span></div>
+      <div class="total-prog-label"><span id="startLabel">15:06</span><span id="pctLabel">0%</span><span id="endLabel">19:15</span></div>
       <div class="prog-track"><div class="prog-fill" id="totalFill" style="width:0%"></div></div>
     </div>
 
@@ -220,10 +220,11 @@ const DEFAULT_STOPS = [
   { name:"Sanrio Gift Gate", sub:"三麗鷗｜高島屋 Gate Tower 7F", icon:"🎀", dur:30, color:"#c084fc", area:"名古屋站", lat:35.1718703, lng:136.8831836 },
   { name:"Ball & Chain", sub:"大名古屋ビルヂング｜刺繡包", icon:"👜", dur:30, color:"#2dd4bf", area:"名古屋站", lat:35.1719951, lng:136.8845283 },
   { name:"松本清", sub:"DHC 藥妝快速掃貨", icon:"💊", dur:20, color:"#60a5fa", area:"名古屋站", lat:35.1687449, lng:136.8819079 },
-  { name:"HANDS 名古屋", sub:"JR 高島屋 5~11F｜MATCHA 95折", icon:"🛍️", dur:30, color:"#818cf8", area:"名古屋站", lat:35.1708, lng:136.8829 },
+  { name:"HANDS 名古屋", sub:"JR 高島屋 5~11F｜MATCHA 95折", icon:"🛍️", dur:20, color:"#818cf8", area:"名古屋站", lat:35.1708, lng:136.8829 },
+  { name:"前往關西本線月台", sub:"北通路 → 12・13番線｜20:04 發車 → 20:57 抵達", icon:"🚃", dur:9, color:"#f87171", area:"名古屋站", lat:35.1712, lng:136.8817, transfer:true },
 ];
 
-let startMin=15*60+6, endMin=19*60+30;
+let startMin=15*60+6, endMin=19*60+15;
 let stops=DEFAULT_STOPS.map(s=>({...s}));
 let doneAt={};
 let map, personMarker, stopMarkers=[], currentStopIdx=-1;
