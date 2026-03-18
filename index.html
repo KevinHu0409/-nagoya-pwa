@@ -211,8 +211,8 @@ if ('serviceWorker' in navigator) {
 // isMetro: true = 純地鐵資訊列（無地圖 marker）
 const DEFAULT_STOPS = [
   { name:"抵達名古屋站", sub:"新幹線出站", icon:"🚄", dur:5, color:"#c084fc", area:"名古屋站", lat:35.1708, lng:136.8829 },
-  { name:"地鐵名城線→名古屋城站", sub:"名古屋站 → 市役所站｜約15分", icon:"🚇", dur:15, color:"#fbbf24", area:"移動中", lat:35.1740, lng:136.8900, transfer:true },
-  { name:"名古屋城", sub:"本丸御殿｜⚠️ 16:30 關門", icon:"🏯", dur:60, color:"#34d399", area:"名古屋城", lat:35.1847, lng:136.8997 },
+  { name:"地鐵名城線→市役所站", sub:"名古屋站 → 市役所站｜約15分", icon:"🚇", dur:15, color:"#fbbf24", area:"移動中", lat:35.1740, lng:136.8900, transfer:true },
+  { name:"名古屋城", sub:"本丸御殿｜⚠️ 16:30 關門，最後入場 16:00", icon:"🏯", dur:60, color:"#34d399", area:"名古屋城", lat:35.1847, lng:136.8997 },
   { name:"地鐵名城線→榮站", sub:"市役所站 → 榮站｜約8分", icon:"🚇", dur:8, color:"#fbbf24", area:"移動中", lat:35.1695, lng:136.9080, transfer:true },
   { name:"吉伊卡哇 Land", sub:"PARCO 東館 3F", icon:"🐹", dur:35, color:"#f472b6", area:"榮區", lat:35.1636361, lng:136.9081084 },
   { name:"寶可夢中心", sub:"PARCO 東館 2F｜名古屋限定", icon:"⚡", dur:40, color:"#fbbf24", area:"榮區", lat:35.1635667, lng:136.90806759 },
@@ -221,7 +221,8 @@ const DEFAULT_STOPS = [
   { name:"Ball & Chain", sub:"大名古屋ビルヂング｜刺繡包", icon:"👜", dur:30, color:"#2dd4bf", area:"名古屋站", lat:35.1719951, lng:136.8845283 },
   { name:"松本清", sub:"DHC 藥妝快速掃貨", icon:"💊", dur:20, color:"#60a5fa", area:"名古屋站", lat:35.1687449, lng:136.8819079 },
   { name:"HANDS 名古屋", sub:"JR 高島屋 5~11F｜MATCHA 95折", icon:"🛍️", dur:20, color:"#818cf8", area:"名古屋站", lat:35.1708, lng:136.8829 },
-  { name:"前往關西本線月台", sub:"北通路 → 12・13番線｜20:04 發車 → 20:57 抵達", icon:"🚃", dur:9, color:"#f87171", area:"名古屋站", lat:35.1712, lng:136.8817, transfer:true },
+  { name:"3COINS OOOPS!", sub:"Gate Walk 地下1F｜開到 21:00", icon:"🪙", dur:15, color:"#f59e0b", area:"名古屋站", lat:35.1706609, lng:136.8840655 },
+  { name:"前往關西本線月台", sub:"北通路 → 12・13番線｜⚠️ 20:04 發車 → 20:57 抵達", icon:"🚃", dur:12, color:"#f87171", area:"名古屋站", lat:35.1712, lng:136.8817, transfer:true },
 ];
 
 let startMin=15*60+6, endMin=19*60+15;
